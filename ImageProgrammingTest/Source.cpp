@@ -18,6 +18,7 @@ void grayScaleFilter(string fileName);
 
 int main() {
 	/*
+
 	ofstream image;
 	image.open("image.ppm");
 
@@ -78,9 +79,12 @@ int main() {
 
 	image3.close();
 	*/
+	
 	//getting file name from user
+
 	string fileName = "";
 	int filterOption = 0;
+
 	cout << "What image would you like to filter (has to be a ppm file)?: " << endl;
 	cin >> fileName;
 	cout << "What filter would you like to use: " << endl;
@@ -94,6 +98,7 @@ int main() {
 	cout << "Loading... This make take some time..." << endl;
 
 	//switch handleling options
+	//not passing by reference to avoid messing up the main file
 	switch (filterOption) {
 	case 1:
 		redFilter(fileName);
@@ -115,15 +120,17 @@ int main() {
 
 
 	//displaying image using opencv
+	//TODO do this without the OpenCV library
 
 	cv::Mat imageReady = cv::imread("C:\\Users\\Jose\\source\\repos\\ImageProgrammingTest\\ImageProgrammingTest\\newimage.ppm");
 
 	cv::namedWindow("Image", cv::WINDOW_AUTOSIZE);
 
-	// Display the image in the window
+	// Display the image in a new window
 	cv::imshow("Image", imageReady);
 
 	cout << "filter applied, please check your files for new document." << endl;
+
 	// Wait for a key press
 	cv::waitKey(0);
 
@@ -132,7 +139,7 @@ int main() {
 }
 
 
-//funsitons definitions
+//functions definitions
 
 void blueFilter(string fileName) {
 
